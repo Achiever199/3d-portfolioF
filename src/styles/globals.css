@@ -37,6 +37,17 @@
   box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.45);
 }
 
+/* Darker, higher-contrast glass card variant for text-heavy panels
+   (sits on top of busy video backgrounds — used by Projects section) */
+.glass-card-digital {
+  position: relative;
+  background: rgba(4, 10, 18, 0.6);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(0, 210, 255, 0.18);
+  box-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.55), inset 0 0 40px rgba(0, 210, 255, 0.03);
+}
+
 /* Custom Text Glow / Shadows for high accessibility contrast */
 .hero-glow-title {
   color: #ffffff !important;
@@ -46,6 +57,79 @@
 .section-glow-title {
   color: #ffffff !important;
   text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+/* =========================================================
+   DIGITAL BLUE "LIGHTNING" TEXT SYSTEM
+   Tiered glow intensity = visual hierarchy.
+   L1 = section headings (brightest, most flicker)
+   L2 = card / item titles (medium)
+   L3 = badges / labels (medium-small, steady)
+   L4 = body / list copy (subtle glow, fully readable, least flicker)
+   ========================================================= */
+
+@keyframes lightning-flicker {
+  0%, 89%, 100% { opacity: 1; filter: brightness(1); }
+  90% { opacity: 0.85; filter: brightness(1.6); }
+  91% { opacity: 1; filter: brightness(0.85); }
+  92% { opacity: 0.9; filter: brightness(1.9); }
+  93% { opacity: 1; filter: brightness(1); }
+  96% { opacity: 0.92; filter: brightness(1.3); }
+  97% { opacity: 1; filter: brightness(1); }
+}
+
+@keyframes lightning-flicker-soft {
+  0%, 94%, 100% { opacity: 1; }
+  95% { opacity: 0.93; }
+  96% { opacity: 1; }
+}
+
+.digital-text-l1 {
+  color: #5ee8ff;
+  font-weight: 800;
+  text-shadow:
+    0 0 4px rgba(94, 232, 255, 0.95),
+    0 0 14px rgba(0, 210, 255, 0.75),
+    0 0 32px rgba(0, 210, 255, 0.55),
+    0 0 64px rgba(0, 160, 255, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.9);
+  animation: lightning-flicker 5s infinite ease-in-out;
+}
+
+.digital-text-l2 {
+  color: #b6f2ff;
+  font-weight: 700;
+  text-shadow:
+    0 0 3px rgba(182, 242, 255, 0.9),
+    0 0 10px rgba(0, 210, 255, 0.6),
+    0 0 22px rgba(0, 210, 255, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.9);
+  animation: lightning-flicker-soft 6s infinite ease-in-out;
+}
+
+.digital-text-l3 {
+  color: #00d2ff;
+  text-shadow:
+    0 0 2px rgba(0, 210, 255, 0.7),
+    0 0 8px rgba(0, 210, 255, 0.35),
+    0 1px 4px rgba(0, 0, 0, 0.85);
+}
+
+.digital-text-l4 {
+  color: #dff6ff;
+  font-weight: 400;
+  text-shadow:
+    0 0 1px rgba(0, 210, 255, 0.25),
+    0 1px 4px rgba(0, 0, 0, 0.95);
+}
+
+/* Thin electric divider — optional accent under headings */
+.digital-divider {
+  height: 2px;
+  width: 56px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #00d2ff, transparent);
+  box-shadow: 0 0 12px rgba(0, 210, 255, 0.8);
 }
 
 .glass-card-glow::after {
@@ -105,9 +189,9 @@
   font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 700;
-  color: var(--color-accent-pink);
+  color: var(--color-accent-blue);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  text-shadow: 0 0 10px rgba(255, 45, 146, 0.4);
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }

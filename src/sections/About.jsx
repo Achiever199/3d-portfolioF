@@ -5,6 +5,7 @@ import SectionContainer from "../components/SectionContainer";
 /**
  * About Section (Section 1)
  * Displays bio, academic accomplishments, and interactive passion cards.
+ * Text styling: "digital blue lightning" hierarchy (see styles/globals.css)
  */
 export default function About({ isActive }) {
   const passions = [
@@ -18,7 +19,7 @@ export default function About({ isActive }) {
       title: "Full Stack",
       description: "Building responsive, secure, and highly scalable web applications.",
       icon: Globe,
-      color: "text-accent-pink"
+      color: "text-accent-blue"
     },
     {
       title: "Open Source",
@@ -30,53 +31,56 @@ export default function About({ isActive }) {
       title: "Problem Solving",
       description: "Tackling algorithmic complexity and optimizing performance.",
       icon: Lightbulb,
-      color: "text-accent-pink"
+      color: "text-accent-blue"
     }
   ];
 
   return (
     <SectionContainer id="section-1" sectionIndex={1} isActive={isActive}>
-      <div className="glass-card glass-card-glow p-8 md:p-12 rounded-3xl w-full max-w-5xl mx-auto border border-white/5 shadow-2xl relative overflow-hidden">
+      <div className="glass-card-digital p-8 md:p-12 rounded-3xl w-full max-w-5xl mx-auto shadow-2xl relative overflow-hidden">
         
         {/* Soft internal atmospheric glow */}
         <div 
           className="absolute -left-20 -top-20 w-48 h-48 rounded-full pointer-events-none opacity-20 filter blur-[40px] z-0"
           style={{
-            background: "radial-gradient(circle, rgba(255,45,146,0.3) 0%, rgba(0,210,255,0.2) 100%)"
+            background: "radial-gradient(circle, rgba(0,210,255,0.35) 0%, rgba(0,160,255,0.2) 100%)"
           }}
         />
 
         <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-center relative z-10">
           
           {/* LEFT PANEL: Academic & Profile summary */}
-          <div className="md:col-span-5 flex flex-col justify-center border-b md:border-b-0 md:border-r border-white/10 pb-6 md:pb-0 md:pr-10">
+          <div className="md:col-span-5 flex flex-col justify-center border-b md:border-b-0 md:border-r border-accent-blue/10 pb-6 md:pb-0 md:pr-10">
             
             {/* Monogram profile graphic */}
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-accent-pink to-accent-blue p-[1px] mb-6 flex items-center justify-center shadow-lg">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-accent-blue/70 to-accent-blue p-[1px] mb-6 flex items-center justify-center shadow-lg">
               <div className="w-full h-full bg-dark-bg rounded-[15px] flex items-center justify-center text-white">
                 <User size={28} className="text-accent-blue animate-pulse" />
               </div>
             </div>
 
-            <h2 className="section-glow-title text-3xl md:text-5xl font-heading font-black tracking-tight mb-2 leading-none">
+            {/* L1 — Section heading */}
+            <h2 className="digital-text-l1 text-3xl md:text-5xl font-heading tracking-tight mb-2 leading-none">
               About Me
             </h2>
-            <span className="text-accent-pink font-semibold font-body text-xs md:text-sm tracking-wider uppercase mb-6">
+            {/* L3 */}
+            <span className="digital-text-l3 font-semibold font-body text-xs md:text-sm tracking-wider uppercase mb-6">
               Akash Sikarwar
             </span>
 
-            <p className="text-sm md:text-base font-body text-gray-200 leading-relaxed mb-6">
+            {/* L4 — body copy */}
+            <p className="digital-text-l4 text-sm md:text-base font-body leading-relaxed mb-6">
               I am an undergraduate student in Information Technology at MMMUT. I combine creative design methodologies with technical engineering practices to build software that is both highly functional and visually engaging.
             </p>
 
-            {/* Academic badge lines */}
+            {/* Academic badge lines — L4 */}
             <div className="space-y-3 font-body">
-              <div className="flex items-center gap-3 text-sm text-white/95">
+              <div className="digital-text-l4 flex items-center gap-3 text-sm">
                 <GraduationCap size={16} className="text-accent-blue" />
                 <span>B.Tech IT @ MMMUT (CGPA 8.8)</span>
               </div>
-              <div className="flex items-center gap-3 text-sm text-white/95">
-                <Award size={16} className="text-accent-pink" />
+              <div className="digital-text-l4 flex items-center gap-3 text-sm">
+                <Award size={16} className="text-accent-blue" />
                 <span>Designing Head, Hack With India</span>
               </div>
             </div>
@@ -85,7 +89,8 @@ export default function About({ isActive }) {
 
           {/* RIGHT PANEL: Passion Cards Grid */}
           <div className="md:col-span-7">
-            <h3 className="text-lg font-heading font-black text-white mb-6 uppercase tracking-wider">
+            {/* L2 — subsection heading */}
+            <h3 className="digital-text-l2 text-lg font-heading mb-6 uppercase tracking-wider">
               Core Passions
             </h3>
             
@@ -95,17 +100,19 @@ export default function About({ isActive }) {
                 return (
                   <div 
                     key={index}
-                    className="p-5 rounded-xl border border-white/15 bg-white/[0.05] hover:bg-white/[0.08] hover:border-white/25 transition-all duration-300 group"
+                    className="p-5 rounded-xl border border-accent-blue/15 bg-white/[0.04] hover:bg-accent-blue/[0.06] hover:border-accent-blue/30 transition-all duration-300 group"
                   >
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="p-2 rounded-lg bg-white/10 group-hover:bg-white/20 transition-colors">
+                      <div className="p-2 rounded-lg bg-white/10 group-hover:bg-accent-blue/15 transition-colors">
                         <IconComponent size={16} className={passion.color} />
                       </div>
-                      <h4 className="font-heading font-bold text-sm md:text-base text-white/95">
+                      {/* L3 — card title */}
+                      <h4 className="digital-text-l3 font-heading font-bold text-sm md:text-base">
                         {passion.title}
                       </h4>
                     </div>
-                    <p className="text-xs md:text-sm font-body text-white/80 leading-relaxed">
+                    {/* L4 — body copy */}
+                    <p className="digital-text-l4 text-xs md:text-sm font-body leading-relaxed">
                       {passion.description}
                     </p>
                   </div>

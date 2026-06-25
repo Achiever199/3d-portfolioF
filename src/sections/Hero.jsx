@@ -8,6 +8,7 @@ import SectionContainer from "../components/SectionContainer";
 /**
  * Hero Section (Section 0)
  * Premium entrance sequence, split layout, interactive glass panel.
+ * Text styling: "digital blue lightning" hierarchy (see styles/globals.css)
  */
 export default function Hero({ isActive, startAnimation, onNavItemClick }) {
   const containerRef = useRef(null);
@@ -25,9 +26,9 @@ export default function Hero({ isActive, startAnimation, onNavItemClick }) {
 
   const focusItems = [
     { title: "AI/ML", color: "bg-accent-blue" },
-    { title: "Full Stack Development", color: "bg-accent-pink" },
+    { title: "Full Stack Development", color: "bg-accent-blue" },
     { title: "Open Source", color: "bg-accent-blue" },
-    { title: "Data Analytics", color: "bg-accent-pink" }
+    { title: "Data Analytics", color: "bg-accent-blue" }
   ];
 
   // Premium GSAP entrance sequence
@@ -99,20 +100,20 @@ export default function Hero({ isActive, startAnimation, onNavItemClick }) {
         <div 
           className="ambient-glow absolute -top-[40%] -left-[20%] w-[80vw] h-[80vw] rounded-full pointer-events-none opacity-40 filter blur-[80px] z-0"
           style={{
-            background: "radial-gradient(circle, rgba(0,210,255,0.12) 0%, rgba(255,45,146,0.06) 60%, transparent 100%)"
+            background: "radial-gradient(circle, rgba(0,210,255,0.16) 0%, rgba(0,160,255,0.07) 60%, transparent 100%)"
           }}
         />
 
         {/* LEFT COLUMN: Main Info */}
         <div className="lg:col-span-7 z-10 flex flex-col justify-center">
           
-          {/* Tagline */}
-          <span className="hero-subtitle text-xs md:text-sm font-semibold text-accent-pink tracking-widest uppercase mb-3 font-body opacity-0">
+          {/* Tagline — L3 */}
+          <span className="hero-subtitle digital-text-l3 text-xs md:text-sm font-semibold tracking-widest uppercase mb-3 font-body opacity-0">
             B.Tech Information Technology @ MMMUT
           </span>
 
-          {/* Name Reveal */}
-          <h1 className="hero-glow-title text-4xl md:text-7xl lg:text-8xl font-heading font-black tracking-tight mb-4 select-none leading-none">
+          {/* Name Reveal — L1 */}
+          <h1 className="digital-text-l1 text-4xl md:text-7xl lg:text-8xl font-heading tracking-tight mb-4 select-none leading-none">
             <span className="inline-block mr-4 whitespace-nowrap">
               {firstName.split("").map((char, i) => (
                 <span key={i} className="char inline-block">{char}</span>
@@ -125,13 +126,13 @@ export default function Hero({ isActive, startAnimation, onNavItemClick }) {
             </span>
           </h1>
 
-          {/* Subheading / Roles */}
-          <p className="hero-subtitle text-lg md:text-xl font-medium font-body text-white/90 mb-4 opacity-0">
-            AI/ML Engineer <span className="text-accent-blue mx-2">•</span> Full Stack Developer <span className="text-accent-pink mx-2">•</span> Open Source Contributor
+          {/* Subheading / Roles — L2 */}
+          <p className="hero-subtitle digital-text-l2 text-lg md:text-xl font-medium font-body mb-4 opacity-0">
+            AI/ML Engineer <span className="text-accent-blue mx-2">•</span> Full Stack Developer <span className="text-accent-blue mx-2">•</span> Open Source Contributor
           </p>
 
-          {/* One-line Hook */}
-          <p className="hero-subtitle text-sm md:text-base font-body text-gray-200 leading-relaxed mb-8 max-w-xl opacity-0">
+          {/* One-line Hook — L4 */}
+          <p className="hero-subtitle digital-text-l4 text-sm md:text-base font-body leading-relaxed mb-8 max-w-xl opacity-0">
             Building intelligent systems, scalable web applications, and impactful open-source solutions.
           </p>
 
@@ -142,10 +143,10 @@ export default function Hero({ isActive, startAnimation, onNavItemClick }) {
               return (
                 <div 
                   key={index} 
-                  className="highlight-badge glass-card px-4 py-2 rounded-full text-xs font-body font-medium flex items-center gap-2 border border-white/5 opacity-0"
+                  className="highlight-badge glass-card-digital px-4 py-2 rounded-full text-xs font-body font-medium flex items-center gap-2 opacity-0"
                 >
                   <IconComponent size={14} className="text-accent-blue" />
-                  <span>{highlight.text}</span>
+                  <span className="digital-text-l3">{highlight.text}</span>
                 </div>
               );
             })}
@@ -158,7 +159,7 @@ export default function Hero({ isActive, startAnimation, onNavItemClick }) {
             <a 
               href="/resume.pdf"
               download="Akash_Sikarwar_Resume.pdf"
-              className="cta-element cta-button px-6 h-12 rounded-xl bg-accent-pink text-white font-semibold font-body flex items-center gap-2 hover:scale-[1.05] hover:glow-accent-pink transition-all duration-300 shadow-lg cursor-pointer opacity-0"
+              className="cta-element cta-button px-6 h-12 rounded-xl bg-accent-blue text-dark-bg font-semibold font-body flex items-center gap-2 hover:scale-[1.05] hover:glow-accent-blue transition-all duration-300 shadow-lg cursor-pointer opacity-0"
             >
               <Download size={16} />
               <span>Download Resume</span>
@@ -168,14 +169,14 @@ export default function Hero({ isActive, startAnimation, onNavItemClick }) {
             <a 
               href="#section-3"
               onClick={handleProjectsClick}
-              className="cta-element cta-button px-6 h-12 rounded-xl border border-white/25 bg-white/5 text-white font-semibold font-body flex items-center gap-2 hover:bg-white/15 hover:border-white/45 hover:scale-[1.05] transition-all duration-300 cursor-pointer opacity-0"
+              className="cta-element cta-button px-6 h-12 rounded-xl border border-accent-blue/25 bg-white/5 text-white font-semibold font-body flex items-center gap-2 hover:bg-accent-blue/10 hover:border-accent-blue/50 hover:scale-[1.05] transition-all duration-300 cursor-pointer opacity-0"
             >
               <span>View Projects</span>
               <ArrowRight size={16} />
             </a>
 
             {/* Separator */}
-            <div className="cta-element h-6 w-[1px] bg-white/10 mx-2 hidden sm:block opacity-0" />
+            <div className="cta-element h-6 w-[1px] bg-accent-blue/15 mx-2 hidden sm:block opacity-0" />
 
             {/* Social Icons */}
             <div className="flex gap-2">
@@ -183,7 +184,7 @@ export default function Hero({ isActive, startAnimation, onNavItemClick }) {
                 href="https://github.com/Achiever199" 
                 target="_blank" 
                 rel="noreferrer"
-                className="cta-element cta-button p-3 rounded-xl border border-white/20 bg-white/5 text-white/90 hover:border-white/40 hover:bg-white/15 hover:text-white hover:scale-[1.05] transition-all duration-300 cursor-pointer opacity-0"
+                className="cta-element cta-button p-3 rounded-xl border border-accent-blue/20 bg-white/5 text-white/90 hover:border-accent-blue/50 hover:bg-accent-blue/10 hover:text-white hover:scale-[1.05] transition-all duration-300 cursor-pointer opacity-0"
                 title="GitHub Profile"
               >
                 <Github size={18} />
@@ -192,14 +193,14 @@ export default function Hero({ isActive, startAnimation, onNavItemClick }) {
                 href="https://www.linkedin.com/in/akash-sikarwar-aa7177327" 
                 target="_blank" 
                 rel="noreferrer"
-                className="cta-element cta-button p-3 rounded-xl border border-white/20 bg-white/5 text-white/90 hover:border-white/40 hover:bg-white/15 hover:text-white hover:scale-[1.05] transition-all duration-300 cursor-pointer opacity-0"
+                className="cta-element cta-button p-3 rounded-xl border border-accent-blue/20 bg-white/5 text-white/90 hover:border-accent-blue/50 hover:bg-accent-blue/10 hover:text-white hover:scale-[1.05] transition-all duration-300 cursor-pointer opacity-0"
                 title="LinkedIn Profile"
               >
                 <Linkedin size={18} />
               </a>
               <a 
                 href="mailto:sikarwarakash199@gmail.com" 
-                className="cta-element cta-button p-3 rounded-xl border border-white/20 bg-white/5 text-white/90 hover:border-white/40 hover:bg-white/15 hover:text-white hover:scale-[1.05] transition-all duration-300 cursor-pointer opacity-0"
+                className="cta-element cta-button p-3 rounded-xl border border-accent-blue/20 bg-white/5 text-white/90 hover:border-accent-blue/50 hover:bg-accent-blue/10 hover:text-white hover:scale-[1.05] transition-all duration-300 cursor-pointer opacity-0"
                 title="Contact Email"
               >
                 <Mail size={18} />
@@ -212,31 +213,31 @@ export default function Hero({ isActive, startAnimation, onNavItemClick }) {
 
         {/* RIGHT COLUMN: Floating Info Panel */}
         <div className="lg:col-span-5 z-10 flex justify-center lg:justify-end">
-          <div className="info-panel glass-card glass-card-glow p-8 rounded-3xl shadow-2xl relative overflow-hidden w-full max-w-sm lg:mr-4 opacity-0 border border-white/5">
+          <div className="info-panel glass-card-digital p-8 rounded-3xl shadow-2xl relative overflow-hidden w-full max-w-sm lg:mr-4 opacity-0">
             
             {/* Panel glow highlight */}
             <div 
               className="absolute -right-20 -bottom-20 w-44 h-44 rounded-full pointer-events-none opacity-20 filter blur-[40px] z-0"
               style={{
-                background: "radial-gradient(circle, rgba(0,210,255,0.4) 0%, rgba(255,45,146,0.3) 100%)"
+                background: "radial-gradient(circle, rgba(0,210,255,0.45) 0%, rgba(0,160,255,0.25) 100%)"
               }}
             />
 
-            <h3 className="text-xl font-heading font-black mb-6 text-accent-pink flex items-center gap-2">
+            <h3 className="digital-text-l2 text-xl font-heading mb-6 flex items-center gap-2">
               <Code size={18} className="text-accent-blue" />
               <span>Current Focus</span>
             </h3>
 
-            <ul className="space-y-4 font-body text-white/80 relative z-10">
+            <ul className="space-y-4 font-body relative z-10">
               {focusItems.map((item, index) => (
-                <li key={index} className="flex items-center gap-3 text-sm md:text-base py-1 border-b border-white/5 last:border-b-0">
+                <li key={index} className="flex items-center gap-3 text-sm md:text-base py-1 border-b border-accent-blue/10 last:border-b-0">
                   <span className={`w-2 h-2 rounded-full ${item.color} shadow-lg`} />
-                  <span>{item.title}</span>
+                  <span className="digital-text-l4">{item.title}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-8 text-[10px] font-body text-white/30 tracking-widest uppercase">
+            <div className="mt-8 text-[10px] font-body text-accent-blue/40 tracking-widest uppercase">
               • Technical • Modern • Creative
             </div>
 

@@ -5,7 +5,7 @@ import SectionContainer from "../components/SectionContainer";
 /**
  * Experience Section (Section 2)
  * Premium vertical timeline layout.
- * Employs stereoscopic 3D layers (translateZ) to float text above pinned cards.
+ * Text styling: "digital blue lightning" hierarchy (see styles/globals.css)
  */
 export default function Experience({ isActive }) {
   const experiences = [
@@ -27,7 +27,7 @@ export default function Experience({ isActive }) {
       company: "GirlScript Summer of Code 2026",
       duration: "Active Contributor",
       icon: GitPullRequest,
-      color: "bg-accent-pink shadow-[0_0_15px_rgba(255,45,146,0.4)]",
+      color: "bg-accent-blue shadow-[0_0_15px_rgba(0,210,255,0.4)]",
       highlights: [
         "Merged 13+ pull requests across 6 major open-source web repositories.",
         "Resolved front-end layouts, state synchronization, and component styling bugs."
@@ -40,16 +40,18 @@ export default function Experience({ isActive }) {
     <SectionContainer id="section-2" sectionIndex={2} isActive={isActive}>
       <div className="max-w-4xl mx-auto w-full relative z-10 py-8">
         
-        <h2 className="section-glow-title text-3xl md:text-5xl font-heading font-black tracking-tight mb-12 text-accent-blue text-left">
+        {/* L1 — Section heading */}
+        <h2 className="digital-text-l1 text-3xl md:text-5xl font-heading tracking-tight mb-2 text-left">
           Work & Contributions
         </h2>
+        <div className="digital-divider mb-10" />
 
         {/* Timeline container */}
-        <div className="relative border-l border-white/10 pl-6 md:pl-10 space-y-12">
+        <div className="relative border-l border-accent-blue/15 pl-6 md:pl-10 space-y-12">
           
           {/* Glowing gradient vertical track line overlay */}
           <div 
-            className="absolute top-0 bottom-0 left-0 w-[1px] origin-top bg-gradient-to-b from-accent-blue via-accent-pink to-transparent pointer-events-none"
+            className="absolute top-0 bottom-0 left-0 w-[1px] origin-top bg-gradient-to-b from-accent-blue via-accent-blue/40 to-transparent pointer-events-none"
             style={{ transform: "translateZ(10px)" }}
           />
 
@@ -72,7 +74,7 @@ export default function Experience({ isActive }) {
 
                 {/* Experience Card */}
                 <div 
-                  className="glass-card glass-card-glow p-6 md:p-8 rounded-2xl border border-white/5 shadow-xl hover:scale-[1.01] transition-transform duration-300 relative overflow-hidden"
+                  className="glass-card-digital glass-card-glow p-6 md:p-8 rounded-2xl shadow-xl hover:scale-[1.01] transition-transform duration-300 relative overflow-hidden"
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   
@@ -80,7 +82,7 @@ export default function Experience({ isActive }) {
                   <div 
                     className="absolute -right-16 -top-16 w-36 h-36 rounded-full pointer-events-none opacity-10 filter blur-[30px] z-0"
                     style={{
-                      background: "radial-gradient(circle, rgba(0,210,255,0.3) 0%, rgba(255,45,146,0.2) 100%)"
+                      background: "radial-gradient(circle, rgba(0,210,255,0.35) 0%, rgba(0,160,255,0.2) 100%)"
                     }}
                   />
 
@@ -90,29 +92,31 @@ export default function Experience({ isActive }) {
                     style={{ transform: "translateZ(30px)" }}
                   >
                     <div>
-                      <h3 className="text-xl md:text-2xl font-heading font-black text-white/95">
+                      {/* L2 — card title */}
+                      <h3 className="digital-text-l2 text-xl md:text-2xl font-heading">
                         {exp.role}
                       </h3>
-                      <span className="text-accent-pink text-xs md:text-sm font-body font-semibold tracking-wide">
+                      {/* L3 */}
+                      <span className="digital-text-l3 text-xs md:text-sm font-body font-semibold tracking-wide">
                         {exp.company}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-xs font-body text-white/75 bg-white/5 px-3 py-1.5 rounded-lg border border-white/10">
+                    <div className="digital-text-l4 flex items-center gap-2 text-xs font-body bg-white/5 px-3 py-1.5 rounded-lg border border-accent-blue/10">
                       <Calendar size={12} className="text-accent-blue" />
                       <span>{exp.duration}</span>
                     </div>
                   </div>
 
-                  {/* Highlights list: floating at translateZ(20px) */}
+                  {/* Highlights list: floating at translateZ(20px) — L4 body copy */}
                   <ul 
-                    className="space-y-3 font-body text-xs md:text-sm text-gray-200 relative z-10 mb-6"
+                    className="space-y-3 font-body text-xs md:text-sm relative z-10 mb-6"
                     style={{ transform: "translateZ(20px)" }}
                   >
                     {exp.highlights.map((highlight, hIdx) => (
                       <li key={hIdx} className="flex items-start gap-3">
                         <CheckCircle2 size={14} className="text-accent-blue mt-0.5 shrink-0" />
-                        <span>{highlight}</span>
+                        <span className="digital-text-l4">{highlight}</span>
                       </li>
                     ))}
                   </ul>
@@ -123,15 +127,15 @@ export default function Experience({ isActive }) {
                       className="relative z-10"
                       style={{ transform: "translateZ(25px)" }}
                     >
-                      <h4 className="text-[10px] font-heading font-bold text-white/40 tracking-wider uppercase mb-3 flex items-center gap-1.5">
-                        <GitMerge size={10} className="text-accent-pink" />
+                      <h4 className="digital-text-l3 text-[10px] font-heading font-bold tracking-wider uppercase mb-3 flex items-center gap-1.5">
+                        <GitMerge size={10} className="text-accent-blue" />
                         <span>Contributed Repositories</span>
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {exp.repos.map((repo, rIdx) => (
                           <div 
                             key={rIdx} 
-                            className="px-2.5 py-1 rounded-md text-xs font-body font-medium bg-white/5 border border-white/5 text-white/80 hover:bg-white/10 hover:border-white/10 transition-colors"
+                            className="digital-text-l4 px-2.5 py-1 rounded-md text-xs font-body font-medium bg-white/5 border border-accent-blue/10 hover:bg-accent-blue/5 hover:border-accent-blue/20 transition-colors"
                           >
                             {repo}
                           </div>
