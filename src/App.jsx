@@ -12,6 +12,9 @@ import Navbar from "./components/Navbar";
 import Loader from "./components/Loader";
 import ParticlesOverlay from "./components/ParticlesOverlay";
 
+// Lazy-loaded 3D Model Canvas
+const FloatingCanvas = React.lazy(() => import("./components/FloatingCanvas"));
+
 // Sections
 import Hero from "./sections/Hero";
 import About from "./sections/About";
@@ -191,6 +194,13 @@ export default function App() {
         <Awards isActive={activeSection === 5} />
         <Contact isActive={activeSection === 6} />
       </div>
+
+      {/* 3D Floating Developer Model Canvas */}
+      {!isLiteMode && (
+        <React.Suspense fallback={null}>
+          <FloatingCanvas />
+        </React.Suspense>
+      )}
 
       {/* Manual Lite Mode Toggle (Accessibility Control) */}
       <button
